@@ -1,0 +1,72 @@
+﻿@model TTTN.Models.C_slider
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+@{
+    List<SelectListItem> listcar = new List<SelectListItem>();
+
+    SelectListItem listcaritem;
+
+    foreach (var item in ViewBag.order)
+    {
+        listcaritem = new SelectListItem() { Text ="Sau: "+" "+item.slider_name, Value = item.slider_id.ToString() };
+        listcar.Add(listcaritem);
+    }
+}
+
+
+@using (Html.BeginForm("Create", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger", enctype = "multipart/form-data" })
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                <strong class="text-uppercase text-danger">Thêm mới slider</strong>
+            </h3>
+            <div class="card-tools">
+                <button type="submit" class="btn btn-success btn-sm"><i class="far fa-save"></i> Lưu[Thêm]</button>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("Index","Slider")" role="button">
+                    <i class="fas fa-times"></i> Thoát
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Tên slider</label>
+                        <input type="text" class="form-control" name="slider_name" required placeholder="Tên slider">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Hình ảnh</label>
+                        <input type="file" class="form-control" name="file">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Vị trí</label>
+                        <select class="form-control" name="slider_order" id="">
+                            @foreach (var item in listcar)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Trạng thái</label>
+                        <select class="form-control" name="slider_status" id="">
+                            <option value="1">Xuất bản</option>
+                            <option value="0">Chưa xuất bản</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

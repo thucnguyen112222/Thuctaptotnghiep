@@ -1,0 +1,6 @@
+﻿
+@if (Thongbao.has_flash())
+{
+    ThongbaoModel thongbao = Thongbao.get_flash();
+     <div class="alert alert-@thongbao.smg_type">@thongbao.smg</div>
+}

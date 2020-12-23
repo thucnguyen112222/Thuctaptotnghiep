@@ -1,0 +1,126 @@
+﻿
+@{
+    var us = ViewBag.user_Login;
+    var product = ViewBag.list_productss;
+}
+@Html.Partial("Header")
+<div class="container">
+    <div class="col-md-12">
+        <h2 class="text-center">Thông tin khách hàng</h2>
+        <hr>
+        <div class="tabbable">
+            <ul class="nav nav-tabs" id="formtabs">
+                <!-- Tab nav -->
+                <li class="active btn"><a href="#input" data-toggle="tab">Thông tin khách hàng</a></li>
+                <li class="btn"><a href="#radioscheckboxes" data-toggle="tab">Lịch sử giao dịch</a></li>
+            </ul>
+            <form class="form-horizontal" id="components" role="form">
+                <fieldset>
+                    @Html.Partial("_MessageAlert")
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="input">
+                            <div class="component">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5 col-md-5">
+                                            <div class="well well-sm">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        @if (us.user_img != null)
+                                                        {
+                                                            <img src="~/wwwroot/img/user/@us.user_img" alt="Alternate Text" height="150" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/wwwroot/img/user/avatar.jpg" alt="Alternate Text" height="150" />
+                                                        }
+
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-8">
+                                                        <h4>
+                                                            @us.user_fullname
+                                                        </h4>
+                                                        <small>
+                                                            <cite>
+                                                                <i class="glyphicon glyphicon-map-marker"></i>&nbsp;@us.user_address
+                                                            </cite>
+                                                        </small>
+                                                        <p>
+                                                            <i class="glyphicon glyphicon-envelope"></i>&nbsp; @us.user_email <br />
+                                                            <i class="glyphicon glyphicon-phone"></i>&nbsp; @us.user_phone
+                                                        </p>
+                                                        <a href="@Url.Action("UpdateUser", "User", new { id = us.user_id })">Cập nhật thông tin</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="radioscheckboxes">
+                            @{
+                                var order = ViewBag.Donhang;
+                            }
+                            <div class="component">
+                                <div class="form-group card-body">
+                                    <br />
+                                    @foreach (var item in order)
+                                    {
+                                        <div class="col-md-12" style="border-bottom: 1px #cac8c8 solid">
+                                            <br />
+                                            <h5>đơn hàng: @item.order_code</h5>
+                                            <h5>ngày đặt: @item.order_createdate</h5>
+                                            <br />
+                                        </div>
+
+                                        foreach (var row in product)
+                                        {
+                                            if (item.order_id == row.orderdetail_orderid)
+                                            {
+                                                <div class="col-md-12 border mt-3 border-bottom">
+                                                    <br />
+                                                    <div class="col-md-2">
+                                                        <img src="~/wwwroot/img/@row.orderdetail_img" height="120" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>@row.orderdetail_name</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <b>Qty: @row.orderdetail_quanity</b>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <b>
+                                                            @if (item.order_status == 2)
+                                                            {
+                                                                <span class="badge badge-danger">
+                                                                    Đã giao hàng
+                                                                </span>
+                                                            }
+                                                            @if (item.order_status == 0)
+                                                            {
+                                                                <span class="badge badge-success">
+                                                                    Chờ xử lý
+                                                                </span>
+                                                            }
+                                                        </b>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        }
+                                    }
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+@Html.Partial("Footer")

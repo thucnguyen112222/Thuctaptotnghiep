@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TTTN.Models.C_contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        @Html.Partial("_MessageAlert")
+        <h3 class="card-title">
+            <strong class="text-uppercase text-danger">Tất cả liên hệ</strong>
+        </h3>
+        <div class="card-tools">
+
+        </div>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-bordered dataTable no-footer" id="myTable" role="grid" aria-describedby="myTable_info">
+            <thead>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Tiêu đề liên hệ: activate to sort column descending" style="width: 110px;">Tiêu đề liên hệ</th><th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 192px;">Email</th><th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Điện thoại: activate to sort column ascending" style="width: 75px;">Điện thoại</th><th style="width:160px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Trạng thái : activate to sort column ascending">Trạng thái </th><th style="width:160px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Chức năng: activate to sort column ascending">Chức năng</th><th style="width:30px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="ID: activate to sort column ascending">ID</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><a href="">@item.contact_title</a></td>
+                        <td><a href="">@item.contact_email</a></td>
+                        <td><a href="">@item.contact_phone</a></td>
+                        <td class="text-center">
+                            @if (item.contact_status == 1)
+                            {
+                                <span class="badge badge-success">Chưa trả lời</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Đã trả lời</span>
+                            }
+
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-info btn-sm" href="@Url.Action("reply","Contact",new{id = item.contact_id})" role="button">
+                                <i class="fas fa-edit"></i> Trả lời
+                            </a>
+                        </td>
+                        <td class="text-center">@item.contact_id</td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TTTN.Models.C_topic>
+@{
+    ViewBag.Title = "Topic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var list = ViewBag.list_post;
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <div class="float-left">
+                <span class="text-danger"><b>/</b></span>
+                <a href="@item.topic_slug"> @item.topic_name</a>
+            </div> 
+            @foreach (var row in list)
+            {
+                if (row.post_topid == item.topic_id)
+                {
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/wwwroot/img/post/@row.post_img" alt="Alternate Text" width="70" />
+                        </div>
+                        <div class="col-md-8">
+                            <cite title="@row.post_title">
+                                <a class="name_@row.post_id" href="@row.post_slug">@row.post_title</a>
+                            </cite>
+                            
+                        </div>
+                    </div>
+                    <script>
+                        var longText = $('.name_'+@row.post_id);
+                        longText.text(longText.text().substr(0, 36) + "...");
+                    </script>
+                }
+            }
+        </div>
+    }
+</div>

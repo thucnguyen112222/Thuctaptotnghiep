@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TTTN.Models.C_product>
+<div class="row">
+    <br />
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 top_brand_left" style="height:400px;">
+            <div class="hover14 column">
+                <div class="agile_top_brand_left_grid">
+                    <div class="agile_top_brand_left_grid1">
+                        <figure>
+                            <div class="snipcart-item block">
+                                <div class="snipcart-thumb">
+                                    <a href="@item.product_slug"><img title="" alt="" src="~/wwwroot/img/@item.product_img" height="150" width="150" /></a>
+                                    <a class="name_@item.product_id" href="@item.product_slug">@item.product_name</a>
+                                    <h4>@item.product_price.ToString("#,##0").Replace(',', '.') đ</h4>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details">
+                                    <form action="@Url.Action("AddItem","Cart", new { id = item.product_id})" method="post">
+                                        <fieldset>
+                                            <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var longText = $('.name_'+@item.product_id);
+            longText.text(longText.text().substr(0, 25) + "...");
+        </script>
+    }
+</div>
+

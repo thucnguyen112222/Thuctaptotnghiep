@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList<TTTN.Models.C_product>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card-header">
+    <div class="row">
+        <div class="col-md-7">
+            <strong class="text-danger text-uppercase">Quản lí sản phẩm</strong>
+        </div>
+        <div class="col-md-5 text-right">
+            <a href="~/Admin/product/create" class="btn-sm btn-success"><i class="fas fa-save" aria-hidden="true"></i>Thêm </a>
+            <a href="~/Admin/product/trash" class="btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>Thùng rác</a>
+        </div>
+    </div>
+</div>
+@Html.Partial("_MessageAlert")
+<div class="">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Product", new { page }))
+</div>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Hình ảnh</th>
+        <th width="250">Tên sản phẩm</th>
+        <th>Giá gốc</th>
+        <th>Giá bán</th>
+        <th>Giá khuyến mãi</th>
+       
+        <th width="150">Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/wwwroot/img/@item.product_img" alt="" height="100" />
+            </td>
+            <td>
+                <a href="@Url.Action("Details","Product" ,new { id = item.product_id })">@item.product_name</a>
+            </td>
+            <td>
+                
+                <p>@item.product_importprice VNĐ</p>
+            </td>
+            <td>
+                <p>@item.product_price.ToString("#,##0").Replace(',', '.') VNĐ</p>
+            </td>
+            <td>
+                @{
+                    int pricesale = item.product_pricesale != null ? (int)item.product_pricesale : 0;
+                }
+                <p>@pricesale.ToString("#,##0").Replace(',', '.') VNĐ</p>
+            </td>
+            <td>
+                @if (item.product_status == 1)
+                {
+                    <a href="@Url.Action("status", "Product", new { id = item.product_id })" class="btn-sm btn-success" onclick="return confirm('Thay đổi trạng thái ?')"><i class="fa fa-toggle-on" aria-hidden="true"></i> </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("status", "Product", new { id = item.product_id })" class="btn-sm btn-danger" onclick="return confirm('Thay đổi trạng thái ?')"><i class="fa fa-toggle-off" aria-hidden="true"></i> </a>
+                }
+                <a href="@Url.Action("Edit", "Product", new { id = item.product_id })" class="btn-sm btn-success"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                <a href="@Url.Action("DelTrash", "Product", new { id = item.product_id })" class="btn-sm btn-danger" onclick="return confirm('Chuyển vào thùng rác ?')"><i class="fa fa-trash" aria-hidden="true"></i> </a>
+
+            </td>
+        </tr>
+    }
+</table>

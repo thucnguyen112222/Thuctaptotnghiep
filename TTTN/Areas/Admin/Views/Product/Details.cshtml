@@ -1,0 +1,108 @@
+﻿@model TTTN.Models.C_product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="border container">
+    <h2>Chi tiết sản phẩm</h2>
+
+    @Html.ActionLink("Quay lại", "Index")
+</div>
+<div class="container-md">
+
+    <div class="row">
+        <div class="col-md-3">
+            <dl class="dl-horizontal">
+                <dt>
+                    <label>Loại sản phẩm</label>
+                </dt>
+
+                <dd>
+                    @ViewBag.catname
+                </dd>
+
+                <dt>
+                    <label>Tên sản phẩm</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.product_name)
+                </dd>
+                <dt>
+                    <label>Hình ảnh</label>
+                </dt>
+                <dd>
+                    <img src="~/wwwroot/img/@Html.DisplayFor( model => model.product_img)" height="200" />
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-9">
+            <dl class="dl-horizontal">
+                <dt>
+                    <label>Mô tả</label>
+                </dt>
+
+                <dd>
+                    @Html.Raw(Model.product_detail)
+                </dd>
+
+                <dt>
+                    <label>Số lượng tồn</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.product_number)
+                </dd>
+
+                <dt>
+                    <label>Giá gốc</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.product_price)
+                </dd>
+
+                <dt>
+                    <label>Giá khuyến mãi</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.product_pricesale)
+                </dd>
+
+                <dt>
+                    <label>Ngày tạo</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.product_createdat)
+                </dd>
+
+                <dt>
+                    <label>Người tạo</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.product_createdby)
+                </dd>
+                <dt>
+                    <label>Trạng thái</label>
+                </dt>
+                <dd>
+                    @if (Model.product_status == 1)
+                    {
+                        <p>Xuất bản</p>
+                    }
+                    else
+                    {
+                        <p>Chưa xuất bản</p>
+                    }
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+
+</div>

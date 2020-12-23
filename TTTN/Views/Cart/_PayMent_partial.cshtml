@@ -1,0 +1,39 @@
+﻿
+@{
+    if (ViewBag.UserOrder != null)
+    {
+        var item1 = ViewBag.UserOrder;
+
+
+        <div class="row">
+            <form action="@Url.Action("Payment","Cart")" method="post" class="payment container">
+                <h2>ĐẶT HÀNG</h2>
+                <div class="card-body">
+                    <label>Tên người nhận</label>
+                    <input type="text" name="name" value="@item1.order_name" class="form-control" required /><br />
+                    <label>Địa chỉ nhận hàng</label>
+                    <input type="text" name="address" value="@item1.order_deliveryaddress" class="form-control" required /><br />
+                    <label>Số điện thoại</label>
+                    <input type="text" name="phone" value="@item1.order_deliveryphone" class="form-control" required /><br />
+                    <label>Email</label>
+                    <input type="text" name="email" value="@item1.order_email" class="form-control" required /><br />
+                </div>
+                <fieldset>
+                    <span>
+                        <input type="radio" name="payment" value="1" id="payment" />
+                        <label for="payment">Thanh toán khi nhận hàng</label>
+                    </span>
+                    &emsp;
+                    <span>
+                        <input type="radio" name="payment" value="2" id="payment1" />
+                        <label for="payment1">Thanh toán qua ngân hàng</label>
+                    </span><br />
+                </fieldset>
+                <input type="submit" value="Đặt hàng" class="submitclass btn btn-success" />
+            </form>
+        </div>
+    }
+}
+<script>
+
+</script>

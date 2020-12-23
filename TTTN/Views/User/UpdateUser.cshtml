@@ -1,0 +1,99 @@
+﻿@model TTTN.Models.C_user
+
+@{
+    ViewBag.Title = "UpdateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/style_userupdate.css" rel="stylesheet" /><div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+
+                <div class="content-panel">
+                    <h2 class="title">Thông tin cá nhân<span class="pro-label label label-warning">PRO</span></h2>
+
+                    <form action="@Url.Action("UpdateUser","User",new{id = Model.user_id})" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Thông tin cơ bản</h3>
+                            <div class="form-group avatar">
+                                <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                    <img class="img-rounded img-responsive" src="~/wwwroot/img/user/avatar.jpg" height="75" alt="">
+                                </figure>
+                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+                                    <input type="file" name="file" class="file-uploader pull-left">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Họ tên</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" name="user_fullname" class="form-control" value="@Model.user_fullname">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Giới tính</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <select class="form-control" name="user_gender" required style="width: 200px;">
+                                        @{
+
+                                            if (Model.user_gender != 2)
+                                            {
+                                                if (Model.user_gender == 1)
+                                                {
+                                                    <option selected value="1">Nam</option>
+                                                    <option value="0">Nữ</option>
+                                                }
+                                                if(Model.user_gender == 0)
+                                                {
+                                                    <option value="1">Nam</option>
+                                                    <option selected value="0">Nữ</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="2">--Chọn giới tính--</option>
+                                                <option value="1">Nam</option>
+                                                <option value="0">Nữ</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Thông tin liên lạc</h3>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="email" name="user_email" class="form-control" value="@Model.user_email">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Số điện thoại</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" name="user_phone" class="form-control" value="@Model.user_phone">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Địa chỉ</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" name="user_address" class="form-control" value="@Model.user_address">
+
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                <input class="btn btn-success" type="submit" value="Cập nhật">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

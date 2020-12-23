@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TTTN.Models.C_post>
+
+<br />
+<div class="">
+    <h4>Tin tức</h4>
+    <nav class="navbar nav_bottom" style="margin-top:10px">
+        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+            <ul class="nav navbar-nav nav_1">
+                @foreach (var item in Model)
+                {
+                    DateTime ngaymuon = DateTime.Now;
+                    DateTime ngaytra = Convert.ToDateTime(item.post_createdat);
+                    TimeSpan Time = ngaytra - ngaymuon;
+                    int TongSoNgay = Time.Days;
+                    <li style="margin-top:10px">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="~/wwwroot/img/post/@item.post_img" alt="Alternate Text" width="70" />
+                            </div>
+                            <div class="col-md-8">
+                                <cite title="@item.post_title">
+                                    <a class="name_@item.post_id" href="@item.post_slug">@item.post_title</a>
+                                </cite>
+                                <p>@item.post_createdat.ToString("dd/MM/yyyy H:mm:ss")</p>
+                            </div>
+                        </div>
+                        
+                    </li>
+
+                    <script>
+                        var longText = $('.name_'+@item.post_id);
+                        longText.text(longText.text().substr(0, 36) + "...");
+                    </script>
+                }
+
+
+
+            </ul>
+        </div>
+    </nav>
+</div>

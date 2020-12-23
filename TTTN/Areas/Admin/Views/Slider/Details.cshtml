@@ -1,0 +1,99 @@
+﻿@model TTTN.Models.C_slider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>C_slider</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_createdat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_createdat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_createdby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_updatedat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_updatedat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_updatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_updatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slider_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slider_status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.slider_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

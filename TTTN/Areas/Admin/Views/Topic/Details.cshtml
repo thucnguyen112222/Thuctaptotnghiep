@@ -1,0 +1,107 @@
+﻿@model TTTN.Models.C_topic
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>C_topic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_parentid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_parentid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_metakey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_metakey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_metadesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_metadesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_createdat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_createdat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_createdby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_updatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_updatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_updatedat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_updatedat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.topic_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

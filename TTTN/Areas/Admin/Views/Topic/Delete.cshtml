@@ -1,0 +1,113 @@
+﻿@model TTTN.Models.C_topic
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>C_topic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_parentid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_parentid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_metakey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_metakey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_metadesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_metadesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_createdat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_createdat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_createdby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_updatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_updatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_updatedat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_updatedat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

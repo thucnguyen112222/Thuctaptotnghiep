@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TTTN.Models.C_slider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card-header">
+    <div class="row">
+        <div class="col-md-7">
+            <strong class="text-danger text-uppercase">Quản lí sản phẩm</strong>
+        </div>
+        <div class="col-md-5 text-right">
+            <a href="~/Admin/slider/create" class="btn-sm btn-success"><i class="fas fa-save" aria-hidden="true"></i>Thêm </a>
+            <a href="~/Admin/slider/trash" class="btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>Thùng rác</a>
+        </div>
+    </div>
+</div>
+@Html.Partial("_MessageAlert")
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Hình ảnh</th>
+        <th>Tên sản phẩm</th>
+        <th>Ngày tạo</th>
+        <th>ID</th>
+        <th>Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/wwwroot/img/@item.slider_img" alt="@item.slider_name" height="100" />
+            </td>
+            <td>
+                <a href="@Url.Action("Details","Product" ,new { id = item.slider_id })">@item.slider_name</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.slider_createdat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.slider_id)
+            </td>
+            <td>
+                @if (item.slider_status == 1)
+                {
+                    <a href="@Url.Action("status", "Slider", new { id = item.slider_id })" class="btn-sm btn-success" onclick="return confirm('Thay đổi trạng thái ?')"><i class="fa fa-toggle-on" aria-hidden="true"></i> </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("status", "Slider", new { id = item.slider_id })" class="btn-sm btn-danger" onclick="return confirm('Thay đổi trạng thái ?')"><i class="fa fa-toggle-off" aria-hidden="true"></i> </a>
+                }
+                <a href="@Url.Action("Edit", "Slider", new { id = item.slider_id })" class="btn-sm btn-success"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                <a href="@Url.Action("DelTrash", "Slider", new { id = item.slider_id })" class="btn-sm btn-danger" onclick="return confirm('Chuyển vào thùng rác ?')"><i class="fa fa-trash" aria-hidden="true"></i> </a>
+
+            </td>
+        </tr>
+    }
+</table>

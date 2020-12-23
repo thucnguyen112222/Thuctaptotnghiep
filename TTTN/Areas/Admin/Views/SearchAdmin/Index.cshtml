@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@{
+    var result = ViewBag.Item;
+    var list = ViewBag.Query;
+}
+
+@if (result == "category")
+{
+    if (list == null)
+    {
+        <h3>Không có kết quả</h3>
+    }
+    else
+    {
+
+        <table class="table table-bordered dataTable no-footer" id="myTable" role="grid" aria-describedby="myTable_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Tên loại sản phẩm: activate to sort column descending" style="width: 651px;">Tên loại sản phẩm</th>
+                    <th style="width:30px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="ID: activate to sort column ascending">ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in list)
+                {
+                    <tr role="row" class="even">
+                        <td class="sorting_1"><a href="">@item.category_name</a></td>
+
+                        <td class="text-center">@item.category_id</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+@if (result == "product")
+{
+    if (list == null)
+    {
+        <h3>Không có kết quả</h3>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Hình ảnh</th>
+                <th width="250">Tên sản phẩm</th>
+                <th>Giá gốc</th>
+                <th>Giá bán</th>
+                <th>Giá khuyến mãi</th>
+            </tr>
+
+            @foreach (var item in list)
+            {
+                <tr>
+                    <td>
+                        <img src="~/wwwroot/img/@item.product_img" alt="@item.product_name" height="100" />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", "Product", new { id = item.product_id })">@item.product_name</a>
+                    </td>
+                    <td>
+
+                        <p>@item.product_importprice VNĐ</p>
+                    </td>
+                    <td>
+                        <p>@item.product_price.ToString("#,##0").Replace(',', '.') VNĐ</p>
+                    </td>
+                    <td>
+                        @{
+                            int pricesale = item.product_pricesale != null ? (int)item.product_pricesale : 0;
+                        }
+                        <p>@pricesale.ToString("#,##0").Replace(',', '.') VNĐ</p>
+                    </td>
+
+                </tr>
+            }
+        </table>
+    }
+}

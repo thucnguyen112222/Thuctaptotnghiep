@@ -1,0 +1,86 @@
+﻿@model IEnumerable<TTTN.Models.C_user>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("Create", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger", enctype = "multipart/form-data" })
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                <strong class="text-uppercase text-danger">Thêm mới thành viên</strong>
+            </h3>
+            <div class="card-tools">
+                <button class="btn btn-success btn-sm" type="submit" role="button">
+                    <i class="far fa-save"></i> Lưu[Thêm]
+                </button>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("Index","Users")" role="button">
+                    <i class="fas fa-times"></i> Thoát
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
+                        <label for="">Họ tên thành viên</label>
+                        <input type="text" class="form-control" maxlength="200" required name="user_fullname" placeholder="Họ và tên">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" maxlength="200" required name="user_email" placeholder="Thư điện tử">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Số điện thoại</label>
+                        <input type="text" class="form-control" maxlength="11" required name="user_phone" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tên đăng nhập</label>
+                        <input type="text" class="form-control" maxlength="200" required name="user_username" placeholder="Tên đăng nhập">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mật khẩu</label>
+                        <input type="password" class="form-control" maxlength="64" required name="user_password" placeholder="Mật khẩu">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="">Địa chỉ</label>
+                        <input type="text" class="form-control" required name="user_address" placeholder="Địa chỉ">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="">Giới tính</label>
+                        <select class="form-control" name="user_gender" required id="">
+                            
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Xét quyền</label>
+                        <select class="form-control" name="user_access" required id="">
+                            <option value="2">Editor</option>
+                            <option value="1">Administrator</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Avatar</label>
+                        <input type="file" class="form-control" required name="file">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Trạng thái</label>
+                        <select class="form-control" name="user_status" required id="">
+                            <option value="1">Xuất bản</option>
+                            <option value="0">Chưa xuất bản</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,49 @@
+﻿@Html.Partial("Header")
+    <!-- //header -->
+    <!-- banner -->
+
+    <div style="margin-top:-10px">
+        <div class="w3l_banner_nav_right container " style="width:1260px;" >
+            @Html.Action("Slider", "Module")
+        </div>
+        <div class="clearfix"></div>
+        <link rel="stylesheet" href="~/wwwroot/css/flexslider.css" type="text/css" media="screen" property="" />
+        <script defer src="~/wwwroot/js/jquery.flexslider.js"></script>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function (slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
+        </script>
+    </div>
+    <div class="container">
+        <div class="top-brands">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="list-group">
+                        <li style="display:inline;">
+                            <h4>Danh mục sản phẩm</h4>
+                            @Html.Action("Category", "Module")
+                        </li>
+                        <li style="display:inline">
+                            @Html.Action("ProductModule", "Module")
+                        </li>
+                        <li style="display:inline">
+                            @Html.Action("PostModule", "Module")
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-9 text-center">
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("Footer")

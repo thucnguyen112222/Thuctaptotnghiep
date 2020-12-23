@@ -1,0 +1,15 @@
+﻿@model IEnumerable<TTTN.Models.C_menu>
+
+@{ var menu1 = ViewBag.menuitem; }
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="@menu1.menu_link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @menu1.menu_name
+    </a><i></i>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var item in Model)
+        {
+           @Html.Action("SubMenu2", "Module",new { parentid = item.menu_id})
+        }
+    </div>
+</li>

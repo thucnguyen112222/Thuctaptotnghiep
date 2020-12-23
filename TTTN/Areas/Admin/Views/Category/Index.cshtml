@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<TTTN.Models.C_category>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card-header">
+    <div class="row">
+        <div class="col-md-7">
+            <strong class="text-danger text-uppercase">Quản lí sản phẩm</strong>
+        </div>
+        <div class="col-md-5 text-right">
+            <a href="~/Admin/category/create" class="btn-sm btn-success"><i class="fas fa-save" aria-hidden="true"></i>Thêm </a>
+            <a href="~/Admin/category/trash" class="btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>Thùng rác</a>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="container">
+        @Html.PagedListPager(Model, page => Url.Action("Index", "Category", new { page }))
+    </div>
+    @Html.Partial("_MessageAlert")
+    <div class="card-body">
+        <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+            <table class="table table-bordered dataTable no-footer" id="myTable" role="grid" aria-describedby="myTable_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Tên loại sản phẩm: activate to sort column descending" style="width: 651px;">Tên loại sản phẩm</th>
+                        <th style="width:160px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Chức năng: activate to sort column ascending">Chức năng</th>
+                        <th style="width:30px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="ID: activate to sort column ascending">ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr role="row" class="even">
+                            <td class="sorting_1"><a href="">@item.category_name</a></td>
+                            <td class="text-center">
+                                @if (item.category_status == 1)
+                                {
+                                    <a class="btn btn-success btn-sm" href="@Url.Action("Status","Category", new { id = item.category_id})" role="button">
+                                        <i class="fa fa-toggle-on" aria-hidden="true"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-success btn-sm" href="@Url.Action("Status","Category", new { id = item.category_id})" role="button">
+                                        <i class="fa fa-toggle-off navbar-danger" aria-hidden="true"></i>
+                                    </a>
+
+                                }
+
+                                <a class="btn btn-info btn-sm" href="@Url.Action("Edit","Category", new { id = item.category_id})" role="button">
+                                    <i class="fa fa-pen" aria-hidden="true"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("DelTrash","Category", new { id = item.category_id})" role="button">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">@item.category_id</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

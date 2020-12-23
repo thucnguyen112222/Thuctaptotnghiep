@@ -1,0 +1,12 @@
+﻿@model IEnumerable<TTTN.Models.C_menu>
+
+<div class="w3ls_logo_products_left1">
+    <ul class="special_items">
+        @foreach (var item in Model)
+        {
+            @*@Html.Action("Submenu", "Module", new { parentid = item.menu_id })*@
+           
+            <li><a href="@item.menu_link">@item.menu_name</a><i></i></li>
+        }
+    </ul>
+</div>

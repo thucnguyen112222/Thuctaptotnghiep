@@ -1,0 +1,107 @@
+﻿@model TTTN.Models.C_category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>C_category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_parentid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_parentid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_metakey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_metakey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_metadesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_metadesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_createdat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_createdat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_createby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_createby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_updatedat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_updatedat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_updatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_updatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.category_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

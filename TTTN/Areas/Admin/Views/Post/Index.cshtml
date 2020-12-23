@@ -1,0 +1,74 @@
+﻿@model IEnumerable<TTTN.Models.C_post>
+@using TTTN.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <strong class="text-uppercase text-danger">Danh sách bài viết</strong>
+        </h3>
+        <div class="card-tools">
+            <a class="btn btn-success btn-sm" href="@Url.Action("Create","Post")" role="button">
+                <i class="fas fa-plus"></i> Thêm mới
+            </a>
+            <a class="btn btn-danger btn-sm" href="@Url.Action("Trash","Post")" role="button">
+                <i class="fas fa-trash-alt"></i> Thùng rác
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @Html.Partial("_MessageAlert")
+        <table class="text-center table table-hover table-bordered table-striped">
+            <thead class="text-center">
+                <tr class="bg-cyan">
+                    <th>Tên bài viết</th>
+                    <th>Chủ đề bài viết</th>
+                    <th width="200px">Ngày tạo</th>
+                    <th width="150px">Chức năng</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model)
+                {
+                    <tr>
+                        <th>@row.post_title</th>
+                        <td>
+                            @{
+                                TTTNdbContext db = new TTTNdbContext();
+                                var idtopic = db.C_topic.Find(row.post_topid);
+                            }
+                            @idtopic.topic_name
+                        </td>
+                        <td>@row.post_createdat</td>
+                        <td>
+                            @if (row.post_status == 1)
+                            {
+                                <a class="btn btn-success btn-sm" href="@Url.Action("Status","Post",new {id=row.post_id})" role="button">
+                                    <i class="fa fa-toggle-on"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("Status","Post",new {id=row.post_id})" role="button">
+                                    <i class="fa fa-toggle-off"></i>
+                                </a>
+                            }
+                            <a class="btn btn-info btn-sm" href="@Url.Action("Edit","Post",new {id=row.post_id})" role="button">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("DelTrash","Post",new {id=row.post_id})" role="button">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                        <td>@row.post_id</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

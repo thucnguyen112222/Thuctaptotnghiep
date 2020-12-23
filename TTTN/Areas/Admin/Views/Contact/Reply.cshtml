@@ -1,0 +1,60 @@
+﻿@model TTTN.Models.C_contact
+
+@{
+    ViewBag.Title = "Reply";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("Reply", "Contact",new{id = Model.contact_id}, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger"})
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                <strong class="text-uppercase text-danger">Trả lời liên hệ</strong>
+            </h3>
+            <div class="card-tools">
+                <button class="btn btn-success btn-sm" href="@Url.Action("Reply","Contact")" type="submit" role="button">
+                    <i class="far fa-save"></i> Trả lời
+                </button>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("Index","Contact")" role="button">
+                    <i class="fas fa-times"></i> Thoát
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
+                        <label for="">Tiêu đề liên hệ</label>
+                        <input type="text" class="form-control" name="contact_title" value="@Model.contact_title" readonly="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nội dung câu hỏi</label>
+                        <textarea class="form-control" name="contact_detail" rows="3" readonly="">@Model.contact_detail</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nội dung trả lời</label>
+                        <textarea class="form-control" name="reply" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="">Họ Tên</label>
+                        <input type="text" class="form-control" name="contact_fullname" readonly="" value="@Model.contact_fullname">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" name="contact_email" readonly="" value="@Model.contact_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Điện thoại</label>
+                        <input type="text" class="form-control" name="contact_phone" readonly="" value="@Model.contact_phone">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

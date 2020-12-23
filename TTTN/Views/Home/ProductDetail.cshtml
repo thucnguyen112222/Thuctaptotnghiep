@@ -1,0 +1,67 @@
+﻿@model TTTN.Models.C_product
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="float-left" style="float:left !important;">
+    <div class="w3l_banner_nav_right" style="float:left !important;">
+        <div class="agileinfo_single">
+            <h5>@Model.product_name</h5>
+            <div class="col-md-4 agileinfo_single_left">
+                <img id="example" src="~/wwwroot/img/@Model.product_img" class="img-responsive" />
+            </div>
+
+            <div class="col-md-8 agileinfo_single_right">
+                <div class="rating1">
+                    <span class="starRating">
+                        <input id="rating5" type="radio" name="rating" value="5">
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" name="rating" value="4">
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" name="rating" value="3" checked>
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" name="rating" value="2">
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" name="rating" value="1">
+                        <label for="rating1">1</label>
+                    </span>
+                </div>
+                <div class="snipcart-item block">
+                    <div class="snipcart-thumb agileinfo_single_right_snipcart" style="margin-top:20px">
+                        @if (Model.product_pricesale != 0)
+                        {
+                            @{ 
+                                int _pricesale = (int)Model.product_pricesale;
+                            }
+                            <h4>@_pricesale.ToString("#,##0").Replace(',','.') VNĐ<span>@Model.product_price VNĐ</span></h4>
+                        }
+                        else
+                        {
+                            <h4>@Model.product_price VNĐ</h4>
+                        }
+                    </div>
+                    <div class="snipcart-details agileinfo_single_right_details">
+                        <form action="@Url.Action("AddItem","Cart",new{id = Model.product_id})" method="post">
+                            <fieldset>
+                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div style="float:left !important;">
+                <h4>Chi tiết</h4>
+                <p>
+                    @Html.Raw(Model.product_detail)
+                </p>
+            </div>
+        </div>
+        <br />
+        <div class="fb-comments" data-href="https://localhost:44311" data-numposts="5" data-width=""></div>
+        <div class="col-md-12">
+            @Html.Action("relatedproduct", "Home")
+        </div>
+    </div>
+</div>

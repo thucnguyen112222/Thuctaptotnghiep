@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+   
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style_admin.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="swapper mt-5 p-3">
+        <div class="row">
+            <div class="col-md-12 container">
+
+                <H3 class="text-center">Đăng nhập hệ thống</H3>
+                <form name="form1" action="" method="post" class="form-control"style="border:none" >
+                    <br />
+                    <label>Tên đăng nhập</label><br />
+                    <div class="form-group">
+                        <input type="text" name="username" value="" placeholder="Tên đăng nhập" required class="form-control" />
+                    </div>
+                    <label>Mật khẩu</label><br />
+                    <div class="form-group">
+                        <input type="password" name="password" value="" placeholder="Mật khậu" required class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success form-control">Đăng Nhập</button>
+                    </div>
+                    <div class="form-group">
+                        @Html.Raw(ViewBag.Error)
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

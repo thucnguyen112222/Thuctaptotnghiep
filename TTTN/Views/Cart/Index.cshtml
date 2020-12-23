@@ -1,0 +1,83 @@
+﻿@model IEnumerable<TTTN.Models.C_orderdetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="privacy about">
+    <div class="checkout-right">
+        <h4>Giỏ hàng của bạn có: <span>@ViewBag.tt Sản phẩm</span></h4>
+        @Html.Partial("_MessageAlert")
+        <table class="timetable_sub">
+            <thead>
+                <tr>
+                    <th rowspan="1">Hình ảnh</th>
+                    <th width="180px">Số Lượng</th>
+                    <th>Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.tt != 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr class="rem1">
+
+                            <td>
+                                <div class="invert-image">
+                                    <img src="~/wwwroot/img/@item.orderdetail_img" height="100" width="100" class="img-responsive">
+                                </div>
+                            </td>
+                            <td class="invert">
+                                <div class="quantity">
+                                    <div class="quantity-select">
+                                        <a href="@Url.Action("Updateminus","Cart",new { Id=item.orderdetail_id})">
+                                            <div class="entry value-minus active"> </div>
+                                        </a>
+                                        <div class="entry value"><span>@item.orderdetail_quanity</span></div>
+                                        <a href="@Url.Action("Updateplus","Cart",new { Id=item.orderdetail_id})">
+                                            <div class="entry value-plus active"> </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="invert">@item.orderdetail_name</td>
+                            @{ 
+                                int tt =(int) item.orderdetail_total;
+                            }
+                            <td class="invert">@tt.ToString("#,##0").Replace(',', '.') VNĐ</td>
+                            <td class="invert">
+                                <a href="@Url.Action("Delete","Cart", new{Id = item.orderdetail_id})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td class="text-right">Tổng số lượng:</td>
+                        <td> @Model.Sum(m => m.orderdetail_quanity) </td>
+                        <td class="text-right">Tổng thành tiền:</td>
+                        @{ 
+                            int total = (int)Model.Sum(m => m.orderdetail_total * m.orderdetail_quanity);
+                        }
+                        <td colspan="6">@total.ToString("#,##0").Replace(',', '.') VNĐ </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="checkout-left">
+        @if (Model.Count() != 0)
+        {
+            <div class="checkout-right-basket">
+                <a href="@Url.Action("Payment","Cart")">Đặt hàng <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+            </div>
+        }
+        <div class="clearfix"> </div>
+
+    </div>
+
+</div>
+

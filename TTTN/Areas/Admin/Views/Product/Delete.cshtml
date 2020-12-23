@@ -1,0 +1,145 @@
+﻿@model TTTN.Models.C_product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>C_product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_catid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_catid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_pricesale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_pricesale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_metakey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_metakey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_metadesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_metadesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_createdat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_createdat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_createdby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_updatedat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_updatedat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_updatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_updatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

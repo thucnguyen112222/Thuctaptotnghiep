@@ -1,0 +1,123 @@
+﻿@model TTTN.Models.C_post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>C_post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.post_topid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_topid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_metakey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_metakey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_metadesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_metadesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_createdat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_createdat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_createdby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_updatedat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_updatedat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_updatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_updatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post_status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.post_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

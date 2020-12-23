@@ -1,0 +1,29 @@
+﻿@model  IEnumerable<TTTN.Models.C_post>
+@{
+    ViewBag.Title = "ListTopic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@ViewBag.item_topic</h3>
+@foreach (var item in Model)
+{
+    <div class="row" style="margin-top:50px !important;">
+        <div class="col-md-3">
+            <img src="~/wwwroot/img/post/@item.post_img" height="100" alt="Alternate Text" />
+        </div>
+        <div class="col-md-9">
+            <cite class="title" title="@item.post_title" style="float:left !important; margin-left:30px !important">
+                <a class="name_@item.post_id"href="@item.post_slug">
+                    <b >@item.post_title</b>
+                </a>
+            </cite>
+            <br />
+            <p class="time" style="float:left !important; margin-left:30px !important">@item.post_createdat</p><br />
+            
+        </div>
+    </div>
+    <script>
+        var longText = $('.name_' + @item.post_id);
+           longText.text(longText.text().substr(0, 50));
+    </script>
+}

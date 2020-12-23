@@ -1,0 +1,131 @@
+﻿@model TTTN.Models.C_user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>C_user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_access)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_access)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_createdat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_createdat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_createdby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_updatedat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_updatedat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_updatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_updatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.user_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

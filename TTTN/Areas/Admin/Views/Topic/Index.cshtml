@@ -1,0 +1,64 @@
+﻿@model PagedList.IPagedList<TTTN.Models.C_topic>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><strong class="text-uppercase text-danger">Danh sách chủ đề</strong></h3>
+        <div class="card-tools">
+            <a class="btn btn-success btn-sm" href="@Url.Action("Create","Topic")" role="button">
+                <i class="fas fa-plus"></i> Thêm mới
+            </a>
+            <a class="btn btn-danger btn-sm" href="@Url.Action("Trash","Topic")" role="button">
+                <i class="fas fa-trash-alt"></i> Thùng rác
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @Html.Partial("_MessageAlert")
+        <div class="">
+            @Html.PagedListPager(Model, page => Url.Action("Index", "Post", new { page }))
+        </div>
+        <table class="text-center table table-hover table-bordered table-striped">
+            <thead>
+                <tr class="bg-cyan">
+                    <th width="700">Tên chủ đề</th>
+                    <th >Chức năng</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model)
+                {
+                    <tr>
+                        <th>@row.topic_name</th>
+                        <td>
+                            @if (row.topic_status == 1)
+                            {
+                                <a class="btn btn-success btn-sm" href="@Url.Action("Status","Topic",new {id=row.topic_id})" role="button">
+                                    <i class="fa fa-toggle-on"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("Status","Topic",new {id=row.topic_id})" role="button">
+                                    <i class="fa fa-toggle-off"></i>
+                                </a>
+                            }
+                            <a class="btn btn-info btn-sm" href="@Url.Action("Edit","Topic",new {id=row.topic_id})" role="button">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("DelTrash","Topic",new {id=row.topic_id})" role="button">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                        <td>@row.topic_id</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

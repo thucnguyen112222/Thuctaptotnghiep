@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TTTN.Models.C_slider>
+@{
+    ViewBag.Title = "Trash";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-7">
+                <strong class="text-danger text-uppercase">Thùng rác</strong>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        @Html.Partial("_MessageAlert")
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Tên slider</th>
+                <th>Ngày tạo</th>
+                <th>ID</th>
+                <th>Chức năng</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/wwwroot/img/@item.slider_img" alt="@item.slider_name" width="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.slider_name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => item.slider_createdat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.slider_id)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("ReTrash", "Slider", new { id = item.slider_id })" class="btn-sm btn-success">
+                            <i class="fa fa-undo" aria-hidden="true"></i>
+                        </a>
+                        <a href="@Url.Action("Delete", "Slider", new { id = item.slider_id })" class="btn-sm btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+

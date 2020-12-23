@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TTTN.Models.C_user>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <strong class="text-uppercase text-danger">Danh sách thành viên</strong>
+        </h3>
+        <div class="card-tools">
+            <a class="btn btn-success btn-sm" href="@Url.Action("Create","Users")" role="button">
+                <i class="fas fa-plus"></i> Thêm mới
+            </a>
+            <a class="btn btn-danger btn-sm" href="@Url.Action("Trash","Users")" role="button">
+                <i class="fas fa-trash-alt"></i> Thùng rác
+            </a>
+        </div>
+    </div>
+    @Html.Partial("_MessageAlert")
+    <div class="card-body">
+        <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+            <table class="table table-bordered dataTable no-footer" id="myTable" role="grid" aria-describedby="myTable_info">
+
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Họ và tên: activate to sort column descending" style="width: 153px;">Họ và tên</th>
+                        <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Tên đăng nhập: activate to sort column ascending" style="width: 153px;">Tên đăng nhập</th>
+                        <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 269px;">Email</th>
+                        <th style="width:160px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Chức năng: activate to sort column ascending">Chức năng</th>
+                        <th style="width:30px" class="text-center sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="ID: activate to sort column ascending">ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr role="row" class="odd">
+                            <td class="sorting_1"><a href="">@item.user_fullname</a></td>
+                            <td><a href="">@item.user_username</a></td>
+                            <td><a href="">@item.user_email</a></td>
+                            <td class="text-center">
+                                @if (item.user_status == 1)
+                                {
+                                    <a class="btn btn-success btn-sm" href="@Url.Action("Status","Users",new { Id = item.user_id})" role="button">
+                                        <i class="fa fa-toggle-on"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-success btn-sm" href="@Url.Action("Status","Users",new { Id = item.user_id})" role="button">
+                                        <i class="fa fa-toggle-off text-danger"></i>
+                                    </a>
+                                }
+
+
+                                <a class="btn btn-info btn-sm" href="" role="button">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("DelTrash","Users",new { Id = item.user_id})" role="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">@item.user_id</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

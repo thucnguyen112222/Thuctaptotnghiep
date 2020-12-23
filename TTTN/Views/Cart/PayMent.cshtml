@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TTTN.Models.C_orderdetail>
+
+@Html.Partial("Header")
+<link href="~/Content/Payment.css" rel="stylesheet" />
+
+<div class="checkout-left container">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row container">
+
+        @if (Model != null)
+        {
+            <div class="col-md-5 checkout-left-basket">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr class="rem1">
+                                <td class="invert">@item.orderdetail_name</td>
+                                <td class="invert">@item.orderdetail_total.ToString().Replace(',', '.') VNĐ</td>
+                                <td class="invert">
+                                    @item.orderdetail_quanity
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td class="text-right">Tổng thành tiền:</td>
+                            <td colspan="6">@Model.Sum(m => m.orderdetail_total * m.orderdetail_quanity).ToString().Replace(',', '.') VNĐ </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        }
+        <div class="col-md-7">
+            @Html.Partial("_MessageAlert")
+            @{
+                if (ViewBag.pay == 1)
+                {
+                    @Html.Partial("COD_partial")
+                }
+                else if (ViewBag.pay == 2)
+                {
+                    @Html.Partial("Banking_partial")
+                }
+                else
+                {
+                    @Html.Partial("_PayMent_partial")
+                }
+            }
+
+        </div>
+    </div>
+
+    <div class="clearfix"> </div>
+</div>@Html.Partial("Footer")

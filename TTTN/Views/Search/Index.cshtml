@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<TTTN.Models.C_product>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="banner_bottom">
+    <div class="wthree_banner_bottom_left_grid_sub">
+
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<div class="top-brands">
+    <div class="container">
+        <h3>Tìm Kiếm</h3>
+        <div class="agile_top_brands_grids">
+            <p>Kết quả tìm kiếm cho từ khóa "@ViewBag.Keyword" có: @ViewBag.search sản phẩm</p>
+            <div class="row">
+                <br />
+                @if (ViewBag.search != 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="col-md-3 top_brand_left" style="height:400px;">
+                            <div class="hover14 column">
+                                <div class="agile_top_brand_left_grid">
+                                    <div class="agile_top_brand_left_grid1">
+                                        <figure>
+                                            <div class="snipcart-item block">
+                                                <div class="snipcart-thumb">
+                                                    <a href="@item.product_slug"><img title="" alt="" src="~/wwwroot/img/@item.product_img" height="150" width="150" /></a>
+                                                    <p>@item.product_name</p>
+                                                    <h4>@item.product_price đ</h4>
+                                                </div>
+                                                <div class="snipcart-details top_brand_home_details">
+                                                    <form action="" method="post">
+                                                        <fieldset>
+                                                            <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                @Html.Partial("_MessageAlert")
+            </div>
+        </div><div class="pager">
+            @{
+                string searchString = ViewBag.Keyword;
+            }
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { searchString, page }))
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

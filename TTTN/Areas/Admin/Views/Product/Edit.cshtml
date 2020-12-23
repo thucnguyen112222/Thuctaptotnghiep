@@ -1,0 +1,115 @@
+﻿@model TTTN.Models.C_product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@{
+    List<SelectListItem> listcar = new List<SelectListItem>();
+    List<SelectListItem> listorder = new List<SelectListItem>();
+
+    SelectListItem listcaritem;
+
+    foreach (var item in ViewBag.list)
+    {
+        listcaritem = new SelectListItem() { Text = item.category_name, Value = item.category_id.ToString() };
+        listcar.Add(listcaritem);
+    }
+}
+<script src="~/wwwroot/ckeditor/ckeditor.js"></script>
+<h2>CẬP NHẬT SẢN PHẨM</h2>
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger", enctype = "multipart/form-data" })
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-7">
+                    <strong class="text-danger text-uppercase">CẬP NHẬT SẢN PHẨM</strong>
+                </div>
+                <div class="col-md-5 text-right">
+                    <button type="submit" class=" btn btn-sm btn-success"><i class="fas fa-save" aria-hidden="true"></i>Lưu </button>
+                    @Html.Hidden(Model.product_id.ToString())
+                    <a href="~/Admin/product/index" class="btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i>Thoát</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-2">
+            @Html.Partial("_MessageAlert")
+            <div class="row">
+                <div class="col-md-8">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label>Tên sản phẩm</label>
+                        @Html.EditorFor(model => model.product_name, new { @class = "form-control", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.product_name, "", new { @class = "text-danger"})
+                    </div>
+                    <div class="form-group">
+                        <label>Từ khóa SEO</label>
+                        @Html.EditorFor(model => model.product_metakey, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_metakey, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả SEO</label>
+                        @Html.EditorFor(model => model.product_metadesc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_metadesc, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Giá nhập</label>
+                        @Html.EditorFor(model => model.product_importprice, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_importprice, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Giá bán</label>
+                        @Html.EditorFor(model => model.product_price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_price, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Giá khuyến mãi</label>
+                        @Html.EditorFor(model => model.product_pricesale, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.product_pricesale, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        @Html.TextAreaFor(model => model.product_detail, new { @class = "form-control", @id = "ten" })
+                        @Html.ValidationMessageFor(model => model.product_detail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Số lượng sẵn có</label>
+                        @Html.TextBoxFor(model => model.product_number, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.product_number, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Loại sản phẩm</label>
+                        @Html.DropDownListFor(model => model.product_catid, listcar, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.product_number, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        @Html.DropDownListFor(model => model.product_status,  new[] { new SelectListItem { Value = "1", Text = "Xuất bản" }, new SelectListItem { Value = "2", Text = "Chưa xuất bản" } },new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.product_status, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        Chọn tập tin
+                        <input name="file" type="file" id="file" size="40">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    CKEDITOR.config.pasteFromWordPromptCleanup = true;
+    CKEDITOR.config.pasteFromWordRemoveFontStyle = false;
+    CKEDITOR.config.pasteFromWordRemoveStyle = false;
+    CKEDITOR.config.language = "vi";
+    CKEDITOR.config.htmlEncodeOutput = false;
+    CKEDITOR.config.ProcessHTMLEntities = false;
+    CKEDITOR.config.entities = false;
+    CKEDITOR.config.entities_latin = false;
+    CKEDITOR.config.ForceSimpleAmpersand = true;
+    CKEDITOR.replace('ten');
+</script>

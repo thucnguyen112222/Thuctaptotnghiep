@@ -1,0 +1,13 @@
+﻿@model IEnumerable<TTTN.Models.C_slider>
+<section class="slider">
+    <div class="flexslider">
+        <ul class="slides">
+            @foreach (var item in Model)
+            {
+            <li>
+                <img src="~/wwwroot/img/@item.slider_img" alt="Alternate Text" />
+            </li>
+            }
+        </ul>
+    </div>
+</section>

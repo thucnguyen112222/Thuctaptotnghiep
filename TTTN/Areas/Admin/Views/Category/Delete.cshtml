@@ -1,0 +1,55 @@
+﻿@model TTTN.Models.C_category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<div class="card">
+   
+    <div class="card-body">
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="">Tên loại sản phẩm</label>
+                    <input type="text" value="@Model.category_name" readonly class="form-control" name="category_name" placeholder="Tên sản phẩm">
+                </div>
+                <div class="form-group">
+                    <label for="">Mô tả SEO</label>
+                    <textarea class="form-control" name="category_metakey"readonly rows="3">@Model.category_metadesc</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Từ khóa SEO</label>
+                    <textarea class="form-control" name="category_metadesc"readonly rows="3">@Model.category_metakey</textarea>
+                </div>
+            </div>
+            <div class="col-3">
+
+                <div class="form-group">
+                    <label for="">Trạng thái</label>
+                    @if (Model.category_status == 1)
+                    {
+                        <input type="text" value="Xuất bản" readonly class="form-control">
+                    }
+                    else
+                    {
+                        <input type="text" value="Chưa xuất bản" readonly class="form-control">
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

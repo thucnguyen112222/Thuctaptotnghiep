@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TTTN.Models.C_user>
+
+@Html.Partial("Header")
+<div class="w3_login">
+    <h3>Đăng nhập & Đăng ký</h3>
+    <div class="w3_login_module">
+        @Html.Partial("_MessageAlert")
+        <div class="module form-module">
+            <div class="toggle">
+                <i class="fa fa-times fa-pencil"></i>
+                <div class="tooltip">Đăng kí</div>
+            </div>
+            <div class="form">
+                <h2>Đăng nhập</h2>
+                <form action="@Url.Action("Login","User")" method="post">
+                    <input type="text" name="user_email" placeholder="Tên đăng nhập" required>
+                    <input type="password" name="user_password" placeholder="Mật khẩu" required>
+                    <input type="submit" value="Login">
+                </form>
+                <br />
+
+            </div>
+            <div id="fb-root"></div>
+            <div class="form">
+                <h2>Đăng kí</h2>
+                <form action="@Url.Action("Register","User")" method="post">
+                    <input type="text" name="username" maxlength="100" placeholder="Tên đăng nhập" required>
+                    <input type="password" name="password" maxlength="64" placeholder="Mật khẩu" required>
+                    <input type="password" name="xacnhanpw" maxlength="64" placeholder="Nhập lại mật khẩu" required>
+                    <input type="text" name="fullname" maxlength="100" placeholder="Họ và tên" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="phone" placeholder="Số điện thoại" required>
+                    <input type="text" name="address" placeholder="Địa chỉ" required>
+                    <input type="submit" value="Đăng kí">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.toggle').click(function () {
+            // Switches the Icon
+            $(this).children('i').toggleClass('fa-pencil');
+            // Switches the forms
+            $('.form').animate({
+                height: "toggle",
+                'padding-top': 'toggle',
+                'padding-bottom': 'toggle',
+                opacity: "toggle"
+            }, "slow");
+        });
+    </script>
+</div>
+<!-- //login -->
+
+@Html.Partial("Footer")

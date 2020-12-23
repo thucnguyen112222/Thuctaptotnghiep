@@ -1,0 +1,20 @@
+﻿.payment {
+    background-color: #eaeaea;
+    max-width: 600px;
+    min-height: 300px;
+    margin-bottom: 50px;
+}
+
+    .payment h2 {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .payment input {
+        margin-top: 20px;
+    }
+.submitclass{
+    margin-bottom:10px;
+    margin-left:240px;
+    position:center;
+}

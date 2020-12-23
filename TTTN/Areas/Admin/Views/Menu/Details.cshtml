@@ -1,0 +1,122 @@
+﻿@model TTTN.Models.C_menu
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>C_menu</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_link)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_link)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_tableid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_tableid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_order)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_order)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_position)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_position)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_parentid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_parentid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_createdat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_createdat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_createdby)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_createdby)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_updatedat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_updatedat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.menu_updatedby)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.menu_updatedby)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.menu_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

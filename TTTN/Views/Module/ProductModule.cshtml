@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TTTN.Models.C_product>
+
+<br />
+<div>
+    <h4>Sản phẩm bán chạy</h4>
+    <nav class="navbar nav_bottom" style="margin-top:10px">
+        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+            <ul class="nav navbar-nav nav_1">
+                @foreach (var item in Model)
+                {
+                    <li style="margin-top:10px">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="~/wwwroot/img/@item.product_img" alt="Alternate Text" height="100" />
+                            </div>
+                            <div class="col-md-7">
+                                <cite title="@item.product_name">
+                                    <a class="name_@item.product_id" href="@item.product_slug">@item.product_name</a>
+                                </cite>
+                                <h4>@item.product_price.ToString("#,##0").Replace(',', '.') đ</h4>
+                                @if(item.product_number == 0)
+                                {
+                                    <span class="text-danger">Hết hàng</span>
+                                }
+                                else
+                                {
+                                    <span>Còn: @item.product_number sản phẩm</span>
+                                }
+                            </div>
+                        </div>
+
+                    </li>
+                    <script>
+                        var longText = $('.name_'+@item.product_id);
+                        longText.text(longText.text().substr(0, 17) + "...");
+                    </script>
+                }
+
+            </ul>
+        </div>
+    </nav>
+    <div class="clearfix"></div>
+</div>

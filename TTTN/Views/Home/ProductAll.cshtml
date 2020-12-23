@@ -1,0 +1,64 @@
+﻿
+@model PagedList.IPagedList<TTTN.Models.C_product>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "ProductAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<!--</di-->
+<div class="row">
+    <div class="col-md-0"></div>
+    <div class="col-md-12 container">
+
+        <div class="w3ls_w3l_banner_nav_right_grid">
+            <h3>Tất cả sản phẩm</h3>
+            <div class="w3ls_w3l_banner_nav_right_grid1">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 w3ls_w3l_banner_left" style="height:400px;">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="@item.product_slug"><img src="~/wwwroot/img/@item.product_img" height="140" width="140" class="img-responsive" /></a>
+                                                <cite title="@item.product_name">
+                                                    <a class="name_@item.product_id" href="@item.product_slug" style="color:black">@item.product_name</a>
+                                                </cite>
+                                                <br />
+                                                <h4 class="text-center">@item.product_price.ToString("#,##0").Replace(',', '.') VNĐ</h4>
+                                            </div>
+                                            <div class="snipcart-details">
+                                                <form action="@Url.Action("AddItem","Cart",new{id = item.product_id})" method="post">
+                                                    <fieldset>
+                                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var longText = $('.name_'+@item.product_id);
+                        longText.text(longText.text().substr(0, 25) + "...");
+                    </script>
+                }
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="pager">
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("ProductAll", new { page }))
+        </div>
+    </div>
+
+</div>
