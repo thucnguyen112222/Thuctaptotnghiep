@@ -131,13 +131,10 @@ namespace TTTN.Areas.Admin.Controllers
             {
                 var img = db.C_product.AsNoTracking()
                     .First(m => m.product_id == id);
-
                 string slug = Xstring.ToAscii(product.product_name);
-
                 var list = db.C_product
                     .Where(m => m.product_slug == slug && m.product_id != id)
                     .ToList();
-
                 if (list.Count() != 0)
                 {
                     Thongbao.set_flash("sản phẩm đã tồn tại", "danger");

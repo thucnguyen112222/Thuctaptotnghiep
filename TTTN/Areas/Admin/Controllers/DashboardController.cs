@@ -20,7 +20,7 @@ namespace TTTN.Areas.Admin.Controllers
             ViewBag.Countproduct = db.C_product.ToList().Count();
             ViewBag.CountCategory = db.C_category.ToList().Count();
             ViewBag.Countpost = db.C_post.ToList().Count();
-            ViewBag.selling_products = selling_products().Take(5);
+            ViewBag.selling_products = selling_products();
             return View();
         }
         public List<C_orderdetail> selling_products()

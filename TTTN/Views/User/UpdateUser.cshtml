@@ -1,9 +1,5 @@
 ﻿@model TTTN.Models.C_user
-
-@{
-    ViewBag.Title = "UpdateUser";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@Html.Partial("Header")
 
 <link href="~/Content/style_userupdate.css" rel="stylesheet" /><div class="container">
     <div class="view-account">
@@ -44,7 +40,7 @@
                                                     <option selected value="1">Nam</option>
                                                     <option value="0">Nữ</option>
                                                 }
-                                                if(Model.user_gender == 0)
+                                                if (Model.user_gender == 0)
                                                 {
                                                     <option value="1">Nam</option>
                                                     <option selected value="0">Nữ</option>
@@ -97,3 +93,4 @@
         </section>
     </div>
 </div>
+@Html.Partial("Footer")

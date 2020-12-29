@@ -28,7 +28,6 @@ namespace TTTN
             Session["User_Id_admin"] = null;
             Session["User_Img_admin"] = null;
             Session["User_Acess_admin"] = null;
-            
         }
     }
 }

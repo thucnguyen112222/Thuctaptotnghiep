@@ -101,15 +101,41 @@ namespace TTTN.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "user_id,user_fullname,user_username,user_password,user_email,user_gender,user_phone,user_img,user_access,user_createdat,user_createdby,user_updatedat,user_updatedby,user_status,user_address")] C_user c_user)
+        public ActionResult Edit(C_user user, HttpPostedFileBase file, int id)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(c_user).State = EntityState.Modified;
+                var img = db.C_user.AsNoTracking()
+                    .First(m => m.user_id == id);
+                var us = db.C_user.Where(m => m.user_username == user.user_username);
+                if(us.Count() != 0)
+                {
+                    Thongbao.set_flash("Tên đăng nhập đã tồn tại", "danger");
+                    return RedirectToAction("Index");
+                }
+                user.user_updatedat = DateTime.Now;
+                user.user_updatedby = Convert.ToInt32(Session["User_Id_Admin"].ToString());
+                user.user_password = Xstring.ToMD5(user.user_password);
+                if (file != null && file.ContentLength > 0)
+                {
+                    string directoryimg = Server.MapPath("~/wwwroot/img/user" + img.user_img);
+                    System.IO.File.Delete(directoryimg);
+                    string fileName = Path.GetFileName(file.FileName);
+                    user.user_img = fileName;
+                    string path = Path.Combine(Server.MapPath("~/wwwroot/img/user"), fileName);
+                    file.SaveAs(path);
+                }
+                else
+                {
+                    user.user_img = img.user_img;
+                }
+                user.user_id = id;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
+                Thongbao.set_flash("Cập nhật thành công!", "success");
                 return RedirectToAction("Index");
             }
-            return View(c_user);
+            return View(user);
         }
 
         public ActionResult Delete(int id)

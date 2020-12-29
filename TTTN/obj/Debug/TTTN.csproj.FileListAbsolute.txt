@@ -214,3 +214,16 @@ C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\Twilio.dll
 C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\Microsoft.IdentityModel.Tokens.xml
 C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\Twilio.xml
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Config.dll
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Core.dll
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Host.Owin.dll
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.KeyValue.FileSystem.dll
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Logs.NLog.dll
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.FileSystem.Local.dll
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\NLog.dll
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Config.xml
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Core.xml
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Host.Owin.xml
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.CKFinder.Connector.Logs.NLog.xml
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\CKSource.FileSystem.Local.xml
+C:\Users\thucn\OneDrive\Desktop\NguyenCongThuc\TTTN\bin\NLog.xml
