@@ -7,9 +7,7 @@
 @{
     List<SelectListItem> listcar = new List<SelectListItem>();
     List<SelectListItem> listorder = new List<SelectListItem>();
-
     SelectListItem listcaritem;
-
     foreach (var item in ViewBag.list)
     {
         listcaritem = new SelectListItem() { Text = item.category_name, Value = item.category_id.ToString() };

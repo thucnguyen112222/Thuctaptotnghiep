@@ -154,10 +154,8 @@ namespace TTTN.Controllers
         public ActionResult Topic()
         {
             var list_topic = db.C_topic.Where(m => m.topic_status == 1).ToList();
-
             var select_id = db.C_topic.Where(m => m.topic_status == 1).Select(m => m.topic_id);
-
-            ViewBag.list_post = db.C_post.Where(m => m.post_status == 1 && select_id.Contains(m.post_topid)).Take(3);
+            ViewBag.list_post = db.C_post.Where(m => m.post_status == 1 && select_id.Contains(m.post_topid));
             return View("Topic", list_topic);
         }
         public ActionResult Post(string slug)

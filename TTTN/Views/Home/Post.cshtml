@@ -8,13 +8,34 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="yZwjMFhK"></script>
     <div class="row my-4">
-        
-            <div class="border col-9">
-                <h2 class=" mt-3">@Model.post_title</h2>
-                <i class="far fa-clock"></i> @Model.post_createdat.ToString("dd/MM/yyyy hh:mm:ss")
-                <p>@Html.Raw(Model.post_detail)</p>
-                <div class="fb-comments" data-href="https://localhost:44397/" data-numposts="1" data-width=""></div>
-                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
-            </div>
+
+        <div class="border col-9">
+            <h2 class=" mt-3">@Model.post_title</h2>
+            @{
+
+                DateTime t = DateTime.Now;
+                DateTime i = Model.post_createdat;
+                TimeSpan date = t - i;
+                int day = date.Days;
+                int h = date.Hours;
+                int p = date.Minutes;
+            }
+            <i class="far fa-clock"></i>
+            @if (day > 0)
+            {
+                <p>@day  Ngày trước</p>
+            }
+            else if (h > 0 && h < 24)
+            {
+                <p>@h Giờ trước</p>
+            }
+            else
+            {
+                <p>@p Phút trước</p>
+            }
+            <p style="float:left !important">@Html.Raw(Model.post_detail)</p>
+            <div class="fb-comments" data-href="https://localhost:44397/" data-numposts="1" data-width=""></div>
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+        </div>
     </div>
 </div>

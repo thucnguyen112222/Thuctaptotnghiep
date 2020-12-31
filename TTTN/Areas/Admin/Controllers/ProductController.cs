@@ -27,7 +27,6 @@ namespace TTTN.Areas.Admin.Controllers
                  .OrderByDescending(m => m.product_id);
             return View(list.ToPagedList(pageNumber, pageSize));
         }
-
         // GET: Admin/Product/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -40,7 +39,6 @@ namespace TTTN.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-
             var cat = db.C_category
                 .Where(m => m.category_id == c_product.product_catid).First();
             ViewBag.catname = cat.category_name;

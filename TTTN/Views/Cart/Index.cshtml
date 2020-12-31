@@ -40,7 +40,7 @@
                             </td>
                             <td class="invert">@item.orderdetail_name</td>
                             @{
-                                int tt = (int)item.orderdetail_total;
+                                int tt = (int)item.orderdetail_price;
                             }
                             <td class="invert">@tt.ToString("#,##0").Replace(',', '.') VNĐ</td>
                             <td class="invert">
@@ -68,7 +68,7 @@
                         <td> @Model.Sum(m => m.orderdetail_quanity) </td>
                         <td class="text-right">Tổng thành tiền:</td>
                         @{
-                            int total = (int)Model.Sum(m => m.orderdetail_total * m.orderdetail_quanity);
+                            int total = (int)Model.Sum(m => m.orderdetail_price * m.orderdetail_quanity);
                         }
                         <td colspan="6">@total.ToString("#,##0").Replace(',', '.') VNĐ </td>
                     </tr>

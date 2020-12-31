@@ -31,10 +31,8 @@
                     <div class="snipcart-thumb agileinfo_single_right_snipcart" style="margin-top:20px">
                         @if (Model.product_pricesale != 0)
                         {
-                            @{ 
-                                int _pricesale = (int)Model.product_pricesale;
-                            }
-                            <h4>@_pricesale.ToString("#,##0").Replace(',','.') VNĐ<span>@Model.product_price VNĐ</span></h4>
+                            int _pricesale = (int)Model.product_pricesale;
+                            <h4>@_pricesale.ToString("#,##0").Replace(',', '.') VNĐ<span>@Model.product_price VNĐ</span></h4>
                         }
                         else
                         {
