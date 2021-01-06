@@ -2,14 +2,12 @@
 using System.Linq;
 using System.Web.Mvc;
 using TTTN.Models;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
 
 namespace TTTN.Controllers
 {
     public class CartController : DefaultController
     {
-        TTTNdbContext db = new TTTNdbContext();
+        private TTTNdbContext db = new TTTNdbContext();
         // GET: Cart
         public ActionResult Index()
         {
@@ -29,7 +27,6 @@ namespace TTTN.Controllers
                     ViewBag.tt = list.Count();
                     Session["SL_Cart"] = list.Count();
                 }
-
                 return View(list);
             }
             else
@@ -43,6 +40,7 @@ namespace TTTN.Controllers
             {
                 return Redirect("~/user/dang-nhap");
             }
+            
             var us = db.C_user.Find(Convert.ToInt32(Session["User_Id"]));
 
             var sp = db.C_product.Find(Id);
@@ -163,7 +161,6 @@ namespace TTTN.Controllers
             Thongbao.set_flash("Xóa thành công", "danger");
             return RedirectToAction("Index");
         }
-
         public ActionResult PayMent()
         {
 
@@ -231,7 +228,6 @@ namespace TTTN.Controllers
             ViewBag.pay = payment_item;
             return View();
         }
-
         public ActionResult paymentBanking()
         {
             if (Session["User_Id"] == null)
@@ -247,6 +243,5 @@ namespace TTTN.Controllers
             Thongbao.set_flash("Đặt hàng thành công", "success");
             return View("Payment");
         }
-        
     }
 }

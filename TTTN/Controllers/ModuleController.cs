@@ -55,7 +55,6 @@ namespace TTTN.Controllers
                 .Where(m => m.category_status == 1 && m.category_parentid == 0).ToList();
             return View(Cat);
         }
-
         public ActionResult SubCategory(int parentid)
         {
             ViewBag.subcategory = db.C_category.Find(parentid);
@@ -70,7 +69,6 @@ namespace TTTN.Controllers
                 return View("SubCategory2");
             }
         }
-
         public ActionResult ProductModule()
         {
             var list = db.C_orderdetail.Select(m=>m.orderdetail_productid);
@@ -78,7 +76,6 @@ namespace TTTN.Controllers
                 .Where(m=>m.product_status ==1 && list.Contains(m.product_id)).Take(3);
             return View(product_item);
         }
-
         public ActionResult PostModule()
         {
             var list = db.C_post

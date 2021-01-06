@@ -54,13 +54,11 @@ namespace TTTN.Areas.Admin.Controllers
             var item = db.C_contact.Where(m => m.contact_status == 1).ToList();
             return item.Count();
         }
-
         public int OrderNew()
         {
             int list_order = db.C_order.Where(m => m.order_status == 0).Count();
             return list_order;
         }
-
         public int Profit()
         {
             var query = from o in db.C_order
@@ -86,6 +84,5 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return gia;
         }
-
     }
 }

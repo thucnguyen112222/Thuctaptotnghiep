@@ -38,7 +38,6 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View(c_category);
         }
-
         // GET: Admin/Category/Create
         public ActionResult Create()
         {
@@ -46,10 +45,6 @@ namespace TTTN.Areas.Admin.Controllers
 
             return View();
         }
-
-        // POST: Admin/Category/Create
-        // To protect from over posting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(C_category category)
@@ -75,26 +70,6 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Thêm thất bại", "success");
             return View(category);
         }
-
-        // GET: Admin/Category/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            ViewBag.list = db.C_category.Where(m => m.category_status != 0).ToList();
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            C_category c_category = db.C_category.Find(id);
-            if (c_category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(c_category);
-        }
-
-        // POST: Admin/Category/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(C_category category, int id)
@@ -134,9 +109,7 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View(category);
         }
-
         // GET: Admin/Category/Delete/5
-
         public ActionResult Delete(int id)
         {
             C_category c_category = db.C_category.Find(id);
@@ -149,7 +122,6 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Xóa thành công", "success");
             return RedirectToAction("Index");
         }
-
         public ActionResult DelTrash(int? id)
         {
             C_category category = db.C_category.Find(id);
@@ -165,14 +137,12 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Đã chuyển vào thùng rác", "success");
             return RedirectToAction("Index");
         }
-
         public ActionResult Trash()
         {
             var list = db.C_category.Where(m => m.category_status == 2);
             return View(list.ToList());
         }
         // GET: Admin/Product/Delete/5
-
         public ActionResult Status(int id)
         {
             C_category category = db.C_category.Find(id);

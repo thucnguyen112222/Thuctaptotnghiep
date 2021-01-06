@@ -96,7 +96,6 @@ namespace TTTN.Areas.Admin.Controllers
                 .Where(m => m.menu_status != 2 && m.menu_position == "Menu").ToList();
             return View(menu_list);
         }
-
         // GET: Admin/C_menu/Details/5
         public ActionResult Details(int? id)
         {
@@ -157,9 +156,7 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View();
         }
-
         // GET: Admin/C_menu/Delete/5
-
         public ActionResult Delete(int id)
         {
             C_menu c_menu = db.C_menu.Find(id);
@@ -168,7 +165,6 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Xóa thành công", "succsess");
             return RedirectToAction("Index");
         }
-
         public ActionResult DelTrash(int? id)
         {
             C_menu menu = db.C_menu.Find(id);
@@ -184,14 +180,12 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Đã chuyển vào thùng rác", "success");
             return RedirectToAction("Index");
         }
-
         public ActionResult Trash()
         {
             var list = db.C_menu.Where(m => m.menu_status == 2);
             return View(list.ToList());
         }
         // GET: Admin/Product/Delete/5
-
         public ActionResult Status(int id)
         {
             C_menu menu = db.C_menu.Find(id);

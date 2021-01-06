@@ -35,7 +35,6 @@ namespace TTTN.Controllers
                 return RedirectToAction("Login");
             }
         }
-
         public ActionResult Login()
         {
             if (System.Web.HttpContext.Current.Session["User"] == null)
@@ -145,7 +144,6 @@ namespace TTTN.Controllers
             }
             return View();
         }
-
         public ActionResult UpdateUser(int? id)
         {
             if (Session["User"] != null)

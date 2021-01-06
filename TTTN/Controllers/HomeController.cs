@@ -141,7 +141,6 @@ namespace TTTN.Controllers
                          .OrderByDescending(x => x.product_id).ToList();
             return View("ProductCategory", list.ToPagedList(pageNumber, pageSize));
         }
-
         public ActionResult RelatedProduct(string slug)
         {
             var item = db.C_product.Where(m => m.product_slug == slug && m.product_status == 1).First();
@@ -150,7 +149,6 @@ namespace TTTN.Controllers
                 .Take(3).ToList();
             return View(listProduct);
         }
-
         public ActionResult Topic()
         {
             var list_topic = db.C_topic.Where(m => m.topic_status == 1).ToList();
@@ -163,7 +161,6 @@ namespace TTTN.Controllers
             var item_post = db.C_post.Where(m => m.post_status == 1 && m.post_slug == slug).First();
             return View("Post", model: item_post);
         }
-
         public ActionResult Page(string slug)
         {
             return View();

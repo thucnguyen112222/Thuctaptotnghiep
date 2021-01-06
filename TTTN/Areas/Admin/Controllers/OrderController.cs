@@ -42,7 +42,6 @@ namespace TTTN.Areas.Admin.Controllers
             ViewBag.list_product = list_product;
             return View(order);
         }
-
         public ActionResult DeleteConfirmed(int id)
         {
             C_order c_order = db.C_order.Find(id);

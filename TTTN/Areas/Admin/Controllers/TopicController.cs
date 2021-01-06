@@ -61,7 +61,7 @@ namespace TTTN.Areas.Admin.Controllers
                 var countItem = db.C_topic.Where(m => m.topic_slug == slug);
                 if (slug.Length > 255)
                 {
-                    Thongbao.set_flash("Chủ đề không được quá 255 kí tự","danger");
+                    Thongbao.set_flash("Chủ đề không được quá 255 kí tự", "danger");
                     return RedirectToAction("Index");
                 }
                 if (countItem.Count() > 0)
@@ -85,7 +85,6 @@ namespace TTTN.Areas.Admin.Controllers
 
             return View(topic);
         }
-
         // GET: Admin/Topic/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -143,7 +142,6 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View(topic);
         }
-
         public ActionResult DelTrash(int? id)
         {
             C_topic topic = db.C_topic.Find(id);
@@ -174,14 +172,11 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Đã khôi phục", "success");
             return RedirectToAction("Index");
         }
-
         public ActionResult Trash()
         {
             var list = db.C_topic.Where(m => m.topic_status == 2);
             return View(list.ToList());
         }
-
-
         // GET: Admin/topic/Delete/5
         public ActionResult Delete(int id)
         {
@@ -209,6 +204,5 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Thay đổi trạng thái thành công", "success");
             return RedirectToAction("Index");
         }
-
     }
 }

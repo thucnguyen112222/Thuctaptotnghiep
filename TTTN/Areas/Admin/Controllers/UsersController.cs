@@ -34,13 +34,11 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View(c_user);
         }
-
         // GET: Admin/Users/Create
         public ActionResult Create()
         {
             return View();
         }
-
         // POST: Admin/Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -80,7 +78,6 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View(user);
         }
-
         // GET: Admin/Users/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -95,7 +92,6 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View(c_user);
         }
-
         // POST: Admin/Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -137,7 +133,6 @@ namespace TTTN.Areas.Admin.Controllers
             }
             return View(user);
         }
-
         public ActionResult Delete(int id)
         {
             C_user c_user = db.C_user.Find(id);
@@ -146,7 +141,6 @@ namespace TTTN.Areas.Admin.Controllers
             Thongbao.set_flash("Xóa thành công", "succsess");
             return RedirectToAction("Index");
         }
-
         public ActionResult DelTrash(int? id)
         {
             C_user user = db.C_user.Find(id);
@@ -182,8 +176,6 @@ namespace TTTN.Areas.Admin.Controllers
             return View(list.ToList());
         }
         // GET: Admin/Product/Delete/5
-
-
         public ActionResult Status(int Id)
         {
             C_user user = db.C_user.Find(Id);
